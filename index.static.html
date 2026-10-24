@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mobile Browser Theme Color -->
+    <meta name="theme-color" content="#030305">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Muhammad Bilal Faisal | Full Stack Engineer & QA Specialist</title>
+    <meta name="description" content="Portfolio of Muhammad Bilal Faisal — Full Stack Engineer & QA Specialist. MERN & Next.js Production Architect crafting resilient web applications.">
+    
+    <!-- Custom Cyber Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030305'/%3E%3Crect width='60' height='60' x='2' y='2' rx='12' fill='none' stroke='%2300e5ff' stroke-width='2.5' opacity='0.8'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='900' font-size='24' fill='%23ffffff' letter-spacing='-1'%3EBF%3C/text%3E%3C/svg%3E">
+    
+    <!-- Open Graph (Social Sharing / WhatsApp / LinkedIn Preview) -->
+    <meta property="og:title" content="Muhammad Bilal Faisal | Full Stack Engineer & QA Specialist">
+    <meta property="og:description" content="MERN & Next.js Production Architect crafting resilient web applications, real-time distributed systems, and automated QA pipelines.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bilalfaisaldev.github.io/">
+    <meta property="og:site_name" content="Muhammad Bilal Faisal Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Bilal Faisal | Full Stack Engineer & QA Specialist">
+    <meta name="twitter:description" content="MERN & Next.js Production Architect crafting resilient web applications and automated QA pipelines.">
+    
+    <!-- Modern Display Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <style>
+        :root {
+            --bg: #030305;
+            --text: #ffffff;
+            --accent: #ff2a5f;
+            --accent2: #00e5ff;
+            --surface: rgba(10, 10, 15, 0.8);
+            --border: #1f1f2e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--accent2);
+            color: #000;
+        }
+
+        /* Background Animated SVG Layer */
+        #animated-svg-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -999;
+            pointer-events: none;
+            mix-blend-mode: color-dodge;
+            opacity: 0.15;
+        }
+
+        #animated-svg-layer svg { width: 100vw; height: 100vh; }
+
+        /* WebGL Water Container Elements */
+        #water-surface {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 995;
+            pointer-events: none;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover;
+            mix-blend-mode: color-dodge;
+            opacity: 0.10;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px; height: 8px; background: var(--accent2);
+            border-radius: 50%; position: fixed; left: 0; top: 0; pointer-events: none;
+            z-index: 999; transform: translate(-100px, -100px);
+        }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid rgba(0, 229, 255, 0.5);
+            border-radius: 50%; position: fixed; left: 0; top: 0; pointer-events: none;
+            z-index: 998; transform: translate(-100px, -100px);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-sizing: border-box; z-index: 100;
+            mix-blend-mode: difference;
+        }
+        .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; margin-left: 2rem;
+            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
+            position: relative;
+        }
+        .nav-links a::after {
+            content:''; position: absolute; width: 0; height: 1px;
+            bottom: -5px; left: 0; background: var(--accent2); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cv-btn {
+            border: 1px solid var(--accent2) !important;
+            padding: 7px 16px !important;
+            border-radius: 50px !important;
+            color: var(--accent2) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.4rem !important;
+            transition: all 0.3s ease !important;
+        }
+        .nav-cv-btn:hover {
+            background: var(--accent2) !important;
+            color: #030305 !important;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.45) !important;
+            transform: translateY(-2px);
+        }
+        .nav-cv-btn::after { display: none !important; }
+        .nav-cv-btn svg, .nav-cv-btn i { width: 14px; height: 14px; }
+
+        #back-to-top:hover {
+            background: var(--accent2) !important;
+            color: #030305 !important;
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.45) !important;
+        }
+
+        /* Typography */
+        h1, h2, h3 { font-family: 'Syncopate', sans-serif; font-weight: 700; margin: 0; }
+        
+        /* Layout Sections */
+        section { padding: 8rem 5%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+        .delay-post-name { transition-delay: 2.6s; }
+        .delay-post-desc { transition-delay: 3.8s; }
+        
+        .work-tech2 { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        
+        .tech-pill2 {
+            padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #d7d7d7;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .tech-pill2:hover { border-color: var(--accent2); color: #fff; background: rgba(0, 229, 255, 0.1); transform: translateY(-2px); }
+
+        /* Hero Section */
+        .hero { position: relative; }
+
+        /* 3D Low-Poly Head */
+        #head-3d {
+            position: absolute;
+            top: 50%; right: 0;
+            width: min(48vw, 720px);
+            height: min(48vw, 720px);
+            transform: translateY(calc(-52% + var(--parallax, 0px)));
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.8s ease;
+        }
+        #head-3d.loaded { opacity: 1; }
+        #head-3d canvas { display: block; width: 100%; height: 100%; }
+        .hero h1, .hero-desc, .stats-banner { position: relative; z-index: 1; }
+        .ambient-light {
+            position: absolute; width: 60vw; height: 60vw; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,42,95,0.15) 0%, rgba(0,229,255,0.1) 40%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            filter: blur(80px); z-index: -1; animation: breathe 8s infinite alternate;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 7.5rem); line-height: 0.95; text-transform: uppercase; filter: url(#liquid); }
+        .hero .outline { 
+            color: transparent; 
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.45); 
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            letter-spacing: 2px;
+        }
+
+        /* SVG Name Stroke Animation */
+        .hero-name-svg {
+            height: 0.65em;
+            width: auto;
+            max-width: 95vw;
+            display: inline-block;
+            overflow: visible;
+            vertical-align: middle;
+        }
+
+        .hero-name-text {
+            fill: transparent;
+            stroke: #ffffff;
+            stroke-width: 1.4px;
+            stroke-dasharray: 900;
+            stroke-dashoffset: 900;
+            transition: fill 1.2s ease;
+        }
+
+        .reveal.active .hero-name-text {
+            animation: drawTextStroke 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards, fillName 1.2s 1.8s forwards;
+        }
+
+        @keyframes drawTextStroke {
+            from { stroke-dashoffset: 900; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fillName {
+            from { fill: transparent; }
+            to { fill: #ffffff; }
+        }
+
+        .reveal.active .outline {
+            animation: slideUpFade 1.5s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+        }
+
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-desc {
+            margin-top: 2.5rem; max-width: 680px; font-size: 1.15rem; line-height: 1.7;
+            color: #a0a0b0; border-left: 2px solid var(--accent2); padding-left: 2rem;
+        }
+        .hero-desc strong { color: #fff; font-weight: 600; }
+        
+        /* Scroll Cue */
+        .scroll-cue {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+            font-size: 0.65rem; letter-spacing: 4px; color: #666; z-index: 1;
+        }
+        .scroll-cue::after {
+            content: ''; width: 1px; height: 48px;
+            background: linear-gradient(to bottom, var(--accent2), transparent);
+            animation: scrollPulse 2.2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0% { transform: scaleY(0); transform-origin: top; }
+            45% { transform: scaleY(1); transform-origin: top; }
+            55% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* Infinite Marquee */
+        .marquee {
+            overflow: hidden; padding: 2.5rem 0;
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            background: rgba(3, 3, 5, 0.6);
+            backdrop-filter: blur(8px);
+        }
+        .marquee-track {
+            display: flex; width: max-content;
+            animation: marqueeMove 32s linear infinite;
+            will-change: transform;
+        }
+        .marquee-track span {
+            font-family: 'Syncopate', sans-serif; font-weight: 700;
+            font-size: clamp(1.2rem, 3vw, 2.2rem); text-transform: uppercase;
+            white-space: nowrap; margin-right: 2.5rem;
+            color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+        }
+        .marquee-track span.accent { -webkit-text-stroke: 1px rgba(0,229,255,0.6); color: var(--accent2); }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        @keyframes marqueeMove { to { transform: translateX(-50%); } }
+
+        .stats-banner { display: flex; gap: 4rem; margin-top: 3.5rem; flex-wrap: wrap; }
+        .stat-item h4 { font-size: 2.8rem; color: var(--text); margin-bottom: 0.4rem; }
+        .stat-item p { margin: 0; color: var(--accent2); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* Section Headers */
+        .section-title { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 4rem; text-transform: uppercase; position: relative; }
+        .section-title span { color: var(--accent); }
+
+        /* Featured Work */
+        .work-grid { display: flex; flex-direction: column; gap: 2rem; }
+        .work-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 3rem; background: var(--surface); border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            border-radius: 20px; transition: all 0.4s; position: relative;
+            overflow: hidden;
+        }
+        .work-item::before {
+            content: ''; position: absolute; top:0; left:0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.05), transparent);
+            transform: translateX(-100%); transition: transform 0.6s; z-index: 0;
+        }
+        .work-item:hover { border-color: rgba(0, 229, 255, 0.4); transform: scale(1.008); }
+        .work-item:hover::before { transform: translateX(100%); }
+        .work-content { position: relative; z-index: 1; max-width: 65%; }
+        .work-title { font-size: 2.2rem; margin-bottom: 1rem; color: #fff; }
+        .work-desc { color: #a0a0b0; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .work-tech { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tech-pill {
+            padding: 5px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #d0d0e0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .work-metric {
+            display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+            flex-shrink: 0; position: relative; z-index: 1; text-align: right;
+        }
+        .metric-val { font-family: 'Syncopate', sans-serif; font-size: 1.6rem; color: var(--accent2); font-weight: 700; }
+        .metric-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-top: 0.3rem; }
+
+        /* Project resource links */
+        .work-links { display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap; position: relative; z-index: 1; }
+        .work-links a {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.2rem; border-radius: 50px;
+            border: 1px solid var(--border); color: #cfcfe0;
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px;
+            text-decoration: none; transition: all 0.3s;
+            background: rgba(10, 10, 15, 0.5);
+        }
+        .work-links a:hover {
+            border-color: var(--accent2); color: #fff;
+            background: rgba(0,229,255,0.1); transform: translateY(-2px);
+        }
+        .work-links a.live-btn {
+            border-color: rgba(255, 42, 95, 0.4);
+            color: #ff9cb3;
+        }
+        .work-links a.live-btn:hover {
+            border-color: var(--accent); color: #fff;
+            background: rgba(255, 42, 95, 0.15);
+        }
+        .work-links a i, .work-links a svg { width: 16px; height: 16px; }
+
+        /* Bento Grid Skills */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+            grid-auto-rows: minmax(240px, auto);
+        }
+        .b-card {
+            position: relative;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.3s;
+        }
+        .b-card:hover { border-color: rgba(255, 42, 95, 0.4); background: rgba(15,15,21,0.8); }
+        .b-large { grid-column: span 2; grid-row: span 2; }
+        .b-wide { grid-column: span 2; }
+        
+        .b-header { color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; }
+        .b-title { font-size: 1.6rem; font-weight: 300; }
+        .b-title span { color: var(--accent2); }
+        
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+        .tag-cloud span {
+            color: #e5e5f0; font-size: 0.95rem; padding: 6px 14px;
+            border-radius: 50px; background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            letter-spacing: 0.5px;
+        }
+
+        /* About Section */
+        .about-content { display: flex; gap: 4rem; align-items: flex-start; position: relative; }
+        .about-photo { position: relative; flex-shrink: 0; width: 320px; isolation: isolate; }
+        .about-photo::before {
+            content: ''; position: absolute; inset: 0; z-index: -1;
+            border-radius: 20px; border: 1px solid var(--accent2); opacity: 0.6;
+            transform: translate(14px, 14px); transition: transform 0.4s, opacity 0.4s;
+        }
+        .about-photo:hover::before { transform: translate(8px, 8px); opacity: 1; }
+        
+        /* Avatar Card */
+        .avatar-card {
+            width: 100%; aspect-ratio: 4 / 5; border-radius: 20px;
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(15, 15, 25, 0.9) 0%, rgba(5, 5, 12, 0.95) 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding: 2rem; box-sizing: border-box; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .avatar-card::after {
+            content:''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+        .avatar-badge {
+            width: 110px; height: 110px; border-radius: 50%;
+            border: 2px solid var(--accent2);
+            background: rgba(0, 229, 255, 0.08);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syncopate', sans-serif; font-size: 2.2rem; font-weight: 700;
+            color: #fff; text-shadow: 0 0 20px rgba(0,229,255,0.8);
+            margin-bottom: 1.5rem;
+            position: relative; z-index: 1;
+        }
+        .avatar-name { font-family: 'Syncopate', sans-serif; font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .avatar-role { font-size: 0.8rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+
+        .about-photo figcaption {
+            margin-top: 1rem; color: #666; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 2px; text-align: center;
+        }
+        .about-text { max-width: 800px; font-size: 1.15rem; line-height: 1.8; color: #a0a0b0; }
+        .about-text p { margin-bottom: 1.5rem; }
+        .about-text .highlight { font-size: 1.5rem; color: var(--text); margin-bottom: 2rem; display: block; line-height: 1.4; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+        /* Journey (Experience) */
+        .journey-list { display: flex; flex-direction: column; }
+        .j-row {
+            display: flex; align-items: baseline; border-top: 1px solid var(--border);
+            padding: 3.5rem 0; transition: padding 0.3s; cursor: default; position: relative;
+        }
+        .j-row:hover { padding-left: 1.5rem; background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent); }
+        .j-year { width: 22%; font-family: 'Syncopate'; color: var(--accent2); font-size: 1.1rem; flex-shrink: 0; }
+        .j-role { width: 38%; font-size: 1.5rem; font-family: 'Syncopate'; flex-shrink: 0; padding-right: 2rem; }
+        .j-desc { width: 40%; color: #888; font-size: 0.95rem; line-height: 1.6; }
+
+        /* Contact CTA */
+        #contact { align-items: center; text-align: center; min-height: 70vh; }
+        .contact-cta { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .contact-eyebrow { color: var(--accent2); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; }
+        .contact-title { font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase; line-height: 1.1; }
+        .contact-title span { color: var(--accent); }
+        .cta-buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
+        .email-btn {
+            display: inline-flex; align-items: center; gap: 0.8rem;
+            padding: 1.1rem 2.4rem; border-radius: 50px;
+            font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
+            color: #030305; background: var(--accent2);
+            border: 1px solid var(--accent2);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s, color 0.3s;
+        }
+        .email-btn:hover {
+            transform: translateY(-4px);
+            background: transparent; color: var(--accent2);
+            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.35);
+        }
+        .whatsapp-btn {
+            display: inline-flex; align-items: center; gap: 0.8rem;
+            padding: 1.1rem 2.4rem; border-radius: 50px;
+            font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
+            color: #fff; background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+        .whatsapp-btn:hover {
+            transform: translateY(-4px);
+            border-color: #25D366; color: #25D366;
+            background: rgba(37, 211, 102, 0.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.25);
+        }
+        .contact-cta i, .contact-cta svg { width: 18px; height: 18px; }
+
+        footer { text-align: center; padding: 4rem; border-top: 1px solid var(--border); color: #666; font-size: 0.85rem; line-height: 1.8; }
+
+        @keyframes breathe {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .work-item { flex-direction: column; align-items: flex-start; gap: 2rem; }
+            .work-content { max-width: 100%; }
+            .work-metric { text-align: left; align-items: flex-start; }
+            .j-row { flex-direction: column; gap: 1rem; }
+            .j-year, .j-role, .j-desc { width: 100%; }
+            .about-content { flex-direction: column; }
+            .about-photo { width: min(320px, 100%); }
+        }
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+            .b-card { grid-column: span 1 !important; grid-row: span 1 !important; padding: 1.5rem; min-height: auto; gap: 1.5rem; }
+            .b-title { font-size: 1.4rem; }
+            .work-item { padding: 1.8rem; }
+            .work-title { font-size: 1.6rem; }
+            section { padding: 6rem 5%; }
+            .hero h1 { 
+                font-size: clamp(2rem, 11vw, 3.8rem); 
+                word-wrap: break-word;
+            }
+            .hero-name-svg {
+                height: 0.55em;
+            }
+            .nav-links { display: none; }
+            #head-3d {
+                display: block;
+                top: 50%; right: auto; bottom: auto; left: 50%;
+                width: min(80vw, 320px); height: min(80vw, 320px);
+                transform: translate(-50%, calc(-50% + var(--parallax, 0px)));
+                z-index: 0;
+            }
+        }
+
+        /* Sleek Preloader */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg);
+            z-index: 10000;
+            transition: opacity 0.9s ease;
+        }
+        #preloader.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="preloading">
+    <div id="preloader" aria-hidden="true"></div>
+    <div id="animated-svg-layer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="100%" height="100%" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+                    <stop offset="0%" stop-color="#ffb162" />
+                    <stop offset="30%" stop-color="#ff89cc" />
+                    <stop offset="65%" stop-color="#8a20ff" />
+                    <stop offset="100%" stop-color="#3400b8" />
+                </linearGradient>
+
+                <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#de7518" />
+                    <stop offset="35%" stop-color="#e86fc9" />
+                    <stop offset="70%" stop-color="#a31eff" />
+                    <stop offset="100%" stop-color="#4900d4" />
+                </linearGradient>
+
+                <linearGradient id="darkPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9519ff" />
+                    <stop offset="60%" stop-color="#3700b3" />
+                    <stop offset="100%" stop-color="#14005c" />
+                </linearGradient>
+
+                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00d4ff" />
+                    <stop offset="40%" stop-color="#00a2ff" />
+                    <stop offset="80%" stop-color="#004ce6" />
+                    <stop offset="100%" stop-color="#001882" />
+                </linearGradient>
+            </defs>
+
+            <rect width="1000" height="750" fill="url(#bgGrad)" />
+
+            <path fill="url(#pinkGrad)">
+                <animate 
+                    attributeName="d" 
+                    dur="8s" 
+                    repeatCount="indefinite" 
+                    values="
+                        M 0 240 C 300 240, 400 420, 650 400 C 850 380, 1000 240, 1000 240 L 1000 750 L 0 750 Z;
+                        M 0 340 C 360 110, 520 560, 730 330 C 940 170, 1000 320, 1000 320 L 1000 750 L 0 750 Z;
+                        M 0 200 C 260 320, 420 240, 640 440 C 860 600, 1000 220, 1000 220 L 1000 750 L 0 750 Z;
+                        M 0 240 C 300 240, 400 420, 650 400 C 850 380, 1000 240, 1000 240 L 1000 750 L 0 750 Z"
+                />
+            </path>
+
+            <path fill="url(#darkPurpleGrad)">
+                <animate 
+                    attributeName="d" 
+                    dur="10s" 
+                    repeatCount="indefinite" 
+                    values="
+                        M 400 750 C 450 500, 750 550, 1000 240 L 1000 750 Z;
+                        M 220 750 C 340 320, 680 660, 1000 100 L 1000 750 Z;
+                        M 520 750 C 560 560, 820 460, 1000 340 L 1000 750 Z;
+                        M 400 750 C 450 500, 750 550, 1000 240 L 1000 750 Z"
+                />
+            </path>
+
+            <path fill="url(#blueGrad)">
+                <animate 
+                    attributeName="d" 
+                    dur="12s" 
+                    repeatCount="indefinite" 
+                    values="
+                        M 0 390 C 250 250, 450 750, 850 750 L 0 750 Z;
+                        M 0 510 C 340 120, 600 700, 980 750 L 0 750 Z;
+                        M 0 300 C 200 420, 420 560, 760 700 L 0 750 Z;
+                        M 0 390 C 250 250, 450 750, 850 750 L 0 750 Z"
+                />
+            </path>
+        </svg>
+    </div>
+
+    <div id="water-surface"></div>
+
+    <!-- Cursor-reactive liquid filter for the hero name -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <filter id="liquid">
+                <feTurbulence id="liquidTurb" type="fractalNoise" baseFrequency="0.01 0.016" numOctaves="2" seed="3" result="noise" />
+                <feDisplacementMap id="liquidDisp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="reveal">
+        <div class="logo">MBF ( )</div>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#journey">Journey</a>
+            <a href="#about">About</a>
+            <a href="https://github.com/BilalFaisaldev" target="_blank" rel="noopener">Github</a>
+            <a href="https://wa.me/923203066554" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="mailto:bilalfaisalarain@gmail.com">Contact</a>
+            <a href="resume.pdf" target="_blank" rel="noopener" class="nav-cv-btn"><i data-lucide="file-down"></i> CV</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="ambient-light"></div>
+        <div id="head-3d" aria-hidden="true"></div>
+        <h1 class="reveal delay-1">
+            <svg class="hero-name-svg" viewBox="0 0 880 72" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="56" font-family="'Syncopate', sans-serif" font-weight="700" font-size="50" letter-spacing="3" class="hero-name-text">
+                    MUHAMMAD BILAL
+                </text>
+            </svg><br><span class="outline">FAISAL</span>
+        </h1>
+        
+        <div class="hero-desc reveal delay-post-name">
+            <strong>Full Stack Engineer & QA Specialist</strong> <br>
+            MERN & Next.js Production Architect. <br>
+            Crafting scalable, high-performance web applications and resilient backend architectures with Next.js, Node.js, and automated QA testing pipelines.
+            
+            <div class="work-tech2">
+                <a class="tech-pill2" href="resume.pdf" target="_blank" rel="noopener" style="border-color: var(--accent); color: #ff9cb3; background: rgba(255, 42, 95, 0.08);">
+                    <i data-lucide="file-text"></i> Download CV
+                </a>
+                <a class="tech-pill2" href="https://github.com/BilalFaisaldev" target="_blank" rel="noopener">
+                    <i data-lucide="github"></i> GitHub
+                </a>
+                <a class="tech-pill2" href="https://wa.me/923203066554" target="_blank" rel="noopener">
+                    <i data-lucide="phone"></i> WhatsApp Desk
+                </a>
+                <a class="tech-pill2" href="mailto:bilalfaisalarain@gmail.com">
+                    <i data-lucide="mail"></i> Email
+                </a>
+                <span class="tech-pill2" style="border-color: rgba(0, 229, 255, 0.4); color: var(--accent2);">
+                    <i data-lucide="map-pin"></i> Karachi, PK (Remote)
+                </span>
+            </div>
+        </div>
+
+        <div class="stats-banner reveal delay-post-desc">
+            <div class="stat-item">
+                <h4>3+</h4>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h4>15+</h4>
+                <p>Production Projects</p>
+            </div>
+            <div class="stat-item">
+                <h4>99.9%</h4>
+                <p>Uptime & Reliability</p>
+            </div>
+            <div class="stat-item">
+                <h4>500+</h4>
+                <p>Commits & Sprints</p>
+            </div>
+        </div>
+
+        <div class="scroll-cue reveal delay-post-desc">SCROLL</div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Full Stack Engineer</span><span class="accent">✦</span>
+            <span>Next.js 14</span><span class="accent">✦</span>
+            <span>QA Automation</span><span class="accent">✦</span>
+            <span>Node.js & Express</span><span class="accent">✦</span>
+            <span>PostgreSQL & MongoDB</span><span class="accent">✦</span>
+            <span>Playwright & Jest</span><span class="accent">✦</span>
+            <span>Docker Containers</span><span class="accent">✦</span>
+            <span>Full Stack Engineer</span><span class="accent">✦</span>
+            <span>Next.js 14</span><span class="accent">✦</span>
+            <span>QA Automation</span><span class="accent">✦</span>
+            <span>Node.js & Express</span><span class="accent">✦</span>
+            <span>PostgreSQL & MongoDB</span><span class="accent">✦</span>
+            <span>Playwright & Jest</span><span class="accent">✦</span>
+            <span>Docker Containers</span><span class="accent">✦</span>
+        </div>
+    </div>
+
+    <!-- WORK SECTION -->
+    <section id="work">
+        <h2 class="section-title reveal">Selected <span>Work</span></h2>
+        
+        <div class="work-grid">
+            <!-- Project 1: DropBeam -->
+            <div class="work-item reveal">
+                <div class="work-content">
+                    <h3 class="work-title">DropBeam — Instant Wi-Fi Sharing & Live Clipboard</h3>
+                    <div class="work-desc">
+                        High-speed, privacy-first local file-sharing and live clipboard synchronization utility across local Wi-Fi networks. Zero registration, drag-and-drop file transfers, temporary sandboxed caching, real-time room chat, and self-destruct download timers.
+                    </div>
+                    <div class="work-tech">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Express.js</span>
+                        <span class="tech-pill">WebSockets & Live Sync</span>
+                        <span class="tech-pill">Wi-Fi Subnet Protocol</span>
+                        <span class="tech-pill">HTML5 Canvas</span>
+                        <span class="tech-pill">Render Cloud</span>
+                    </div>
+                    <div class="work-links" onclick="event.stopPropagation()">
+                        <a href="https://dropbeem.onrender.com/" target="_blank" rel="noopener" class="live-btn">
+                            <i data-lucide="external-link"></i> Live App
+                        </a>
+                        <a href="https://github.com/BilalFaisaldev/DropBeem" target="_blank" rel="noopener">
+                            <i data-lucide="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="work-metric" style="color: var(--accent2);">
+                    <span class="metric-val">Wi-Fi Sync</span>
+                    <span class="metric-label">Zero-Config Transfer</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Omar Digital Solutions -->
+            <div class="work-item reveal">
+                <div class="work-content">
+                    <h3 class="work-title">Omar Digital Solutions Platform</h3>
+                    <div class="work-desc">
+                        Full-stack enterprise learning & commercial software ecosystem with serverless architecture, dynamic MongoDB Atlas cloud CMS, and responsive mobile-first UI.
+                    </div>
+                    <div class="work-tech">
+                        <span class="tech-pill">Next.js / Node.js</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">MongoDB Atlas</span>
+                        <span class="tech-pill">TailwindCSS</span>
+                        <span class="tech-pill">Vercel Serverless</span>
+                    </div>
+                    <div class="work-links" onclick="event.stopPropagation()">
+                        <a href="https://ods-courses.vercel.app/" target="_blank" rel="noopener" class="live-btn">
+                            <i data-lucide="external-link"></i> Live Platform
+                        </a>
+                        <a href="https://github.com/BilalFaisaldev/ODS-Courses" target="_blank" rel="noopener">
+                            <i data-lucide="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="work-metric">
+                    <span class="metric-val">Enterprise</span>
+                    <span class="metric-label">EdTech Ecosystem</span>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="work-item reveal">
+                <div class="work-content">
+                    <h3 class="work-title">NOVA — Personal AI Voice Assistant</h3>
+                    <div class="work-desc">
+                        Futuristic AI-powered voice assistant with real-time speech recognition, responsive audio orb visualization, dynamic HUD telemetry, and conversational intelligence powered by Google Gemini API.
+                    </div>
+                    <div class="work-tech">
+                        <span class="tech-pill">Google Gemini API</span>
+                        <span class="tech-pill">Web Speech API</span>
+                        <span class="tech-pill">Canvas Audio Visualizer</span>
+                        <span class="tech-pill">JavaScript ES6+</span>
+                    </div>
+                    <div class="work-links" onclick="event.stopPropagation()">
+                        <a href="https://github.com/BilalFaisaldev/nova-voice-assistant" target="_blank" rel="noopener">
+                            <i data-lucide="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="work-metric" style="color: var(--accent2);">
+                    <span class="metric-val">AI Engine</span>
+                    <span class="metric-label">Voice Telemetry</span>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="work-item reveal">
+                <div class="work-content">
+                    <h3 class="work-title">2048 Cyber Dark Edition</h3>
+                    <div class="work-desc">
+                        High-performance web arcade puzzle game featuring sleek cyber dark aesthetics, fluid CSS grid animations, touch swipe controls, and local score persistence.
+                    </div>
+                    <div class="work-tech">
+                        <span class="tech-pill">JavaScript (ES6+)</span>
+                        <span class="tech-pill">Modern CSS3</span>
+                        <span class="tech-pill">HTML5 Canvas</span>
+                        <span class="tech-pill">Touch Gestures</span>
+                    </div>
+                    <div class="work-links" onclick="event.stopPropagation()">
+                        <a href="https://github.com/BilalFaisaldev/2048-game" target="_blank" rel="noopener">
+                            <i data-lucide="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="work-metric" style="color: var(--accent);">
+                    <span class="metric-val">Arcade</span>
+                    <span class="metric-label">Cyber Edition</span>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="work-item reveal">
+                <div class="work-content">
+                    <h3 class="work-title">Code Creative Commercial Software Suite</h3>
+                    <div class="work-desc">
+                        Production client delivery ecosystem featuring automated end-to-end testing, CI/CD integration, high-throughput relational databases, and containerized deployment.
+                    </div>
+                    <div class="work-tech">
+                        <span class="tech-pill">TypeScript</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Docker</span>
+                        <span class="tech-pill">Playwright E2E</span>
+                        <span class="tech-pill">GitHub Actions</span>
+                    </div>
+                    <div class="work-links" onclick="event.stopPropagation()">
+                        <a href="https://github.com/BilalFaisaldev" target="_blank" rel="noopener">
+                            <i data-lucide="github"></i> Lead & QA Suite
+                        </a>
+                    </div>
+                </div>
+                <div class="work-metric" style="color: var(--accent2);">
+                    <span class="metric-val">Zero-Defect</span>
+                    <span class="metric-label">QA Pipeline</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="capabilities">
+        <h2 class="section-title reveal">Engine <span>Capabilities</span></h2>
+        
+        <div class="bento-grid">
+            <div class="b-card b-large reveal">
+                <div>
+                    <div class="b-header">01 // Front-End & Modern UI</div>
+                    <div class="b-title" style="margin-top: 1rem;">Building responsive, <span>zero-defect</span> web applications.</div>
+                </div>
+                <div class="tag-cloud" style="margin-top: 2rem;">
+                    <span>Next.js 14 (App Router)</span>
+                    <span>React 19</span>
+                    <span>TypeScript</span>
+                    <span>TailwindCSS</span>
+                    <span>HTML5 / Modern CSS3</span>
+                    <span>Zustand</span>
+                    <span>Context API</span>
+                </div>
+            </div>
+
+            <div class="b-card b-wide reveal delay-1">
+                <div>
+                    <div class="b-header">02 // Backend & API Architecture</div>
+                    <div class="b-title" style="margin-top: 0.8rem;">Resilient Scalable APIs</div>
+                </div>
+                <div class="tag-cloud">
+                    <span>Node.js Runtime</span>
+                    <span>Express.js</span>
+                    <span>WebSockets</span>
+                    <span>RESTful APIs</span>
+                    <span>Serverless Functions</span>
+                    <span>JWT Auth & RBAC</span>
+                </div>
+            </div>
+
+            <div class="b-card reveal delay-2">
+                <div>
+                    <div class="b-header">03 // Databases & Caching</div>
+                    <div class="b-title" style="margin-top: 0.8rem;">Data Architecture</div>
+                </div>
+                <div class="tag-cloud">
+                    <span>PostgreSQL</span>
+                    <span>MongoDB Atlas</span>
+                    <span>Redis Cache</span>
+                    <span>Prisma ORM</span>
+                </div>
+            </div>
+
+            <div class="b-card b-wide reveal">
+                <div>
+                    <div class="b-header">04 // DevOps, Tooling & QA Automation</div>
+                    <div class="b-title" style="margin-top: 0.8rem;">Production Pipelines</div>
+                </div>
+                <div class="tag-cloud">
+                    <span>Docker Containers</span>
+                    <span>Playwright E2E</span>
+                    <span>Jest Testing</span>
+                    <span>Git & GitHub</span>
+                    <span>Postman</span>
+                    <span>Vercel</span>
+                    <span>Figma 5.0</span>
+                    <span>CI/CD Actions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="journey">
+        <h2 class="section-title reveal">Career <span>Journey</span></h2>
+        
+        <div class="journey-list">
+            <div class="j-row reveal">
+                <div class="j-year">DEC 2025 — PRES</div>
+                <div class="j-role">Software Engineer & QA Specialist <br><span style="font-size: 1rem; color: var(--accent2); font-family: 'Space Grotesk'">Code Creative & Client Delivery</span></div>
+                <div class="j-desc">Working with <strong>Code Creative</strong> while managing private client projects. Engineering scalable full-stack web architectures, optimizing cloud backends, and establishing automated testing & QA pipelines to maintain production reliability.</div>
+            </div>
+
+            <div class="j-row reveal">
+                <div class="j-year">2024 — PRES</div>
+                <div class="j-role">Independent Full Stack Developer <br><span style="font-size: 1rem; color: var(--accent2); font-family: 'Space Grotesk'">Personal & Commercial Clients</span></div>
+                <div class="j-desc">Delivering custom end-to-end digital solutions for direct clients. Architected high-performance web applications (including DropBeam and ODS), interactive web platforms, RESTful APIs, and cloud deployments tailored to client requirements.</div>
+            </div>
+
+            <div class="j-row reveal">
+                <div class="j-year">JAN 2023 — 2024</div>
+                <div class="j-role">Core Engineering Foundations <br><span style="font-size: 1rem; color: var(--accent2); font-family: 'Space Grotesk'">Intensive Technical Deep-Dive</span></div>
+                <div class="j-desc">Initiated dedicated software development journey in January 2023. Mastered modern JavaScript (ES6+), React, Node.js, Express, databases (MongoDB, PostgreSQL), data structures, and automated QA practices through building rigorous production prototypes.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title reveal">About <span>Me</span></h2>
+        
+        <div class="about-content">
+            <figure class="about-photo reveal" style="margin: 0;">
+                <img id="real-profile-img" src="bilal.jpg" alt="Muhammad Bilal Faisal" style="display:none; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; border: 1px solid var(--border);" onload="this.style.display='block'; var cb = document.getElementById('cyber-avatar-card'); if(cb) cb.style.display='none';">
+                <div class="avatar-card" id="cyber-avatar-card">
+                    <div class="avatar-badge">MBF</div>
+                    <div class="avatar-name">M. Bilal Faisal</div>
+                    <div class="avatar-role">Full Stack & QA Lead</div>
+                </div>
+                <figcaption>Muhammad Bilal Faisal // Karachi, PK</figcaption>
+            </figure>
+
+            <div class="about-info">
+                <div class="about-text reveal delay-1">
+                    <span class="highlight">Zero-Defect Engineering & High-Performance Web Architectures</span>
+                    <p>I am a Full Stack Engineer and QA Automation Specialist based in Karachi, Pakistan, available for remote collaborations worldwide. I bridge the gap between creative, fluid frontend experiences and bulletproof, high-performance backend systems.</p>
+                    <p>With over 3+ years of commercial experience across Next.js 14, Node.js, TypeScript, PostgreSQL, and MongoDB, I build production systems with automated QA testing pipelines (Playwright & Jest) to guarantee 99.9% reliability and zero-regression deployments.</p>
+                </div>
+
+                <div class="stats-banner reveal delay-2" style="margin-top: 3.5rem;">
+                    <div class="stat-item">
+                        <h4>3+</h4>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>15+</h4>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>99.9%</h4>
+                        <p>Code Reliability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact">
+        <div class="contact-cta reveal">
+            <span class="contact-eyebrow">Have an ambitious project or engineering role?</span>
+            <h2 class="contact-title">Let's build something <span>extraordinary</span></h2>
+            <div class="cta-buttons">
+                <a class="email-btn" href="mailto:bilalfaisalarain@gmail.com">
+                    <i data-lucide="mail"></i>
+                    Email Me
+                </a>
+                <a class="whatsapp-btn" href="https://wa.me/923203066554" target="_blank" rel="noopener">
+                    <i data-lucide="message-circle"></i>
+                    WhatsApp Desk
+                </a>
+                <a class="tech-pill2" href="resume.pdf" target="_blank" rel="noopener" style="padding: 1.1rem 2.2rem; font-family: 'Syncopate', sans-serif; font-size: 0.85rem; border-color: var(--accent); color: #ff9cb3;">
+                    <i data-lucide="file-down"></i> Resume CV
+                </a>
+            </div>
+            <p style="margin-top: 2rem; color: #888; font-size: 0.9rem; letter-spacing: 1px;">
+                Karachi, Pakistan (Available for Remote Worldwide)
+            </p>
+        </div>
+    </section>
+
+    <footer class="reveal">
+        <p>Architected by Muhammad Bilal Faisal // Full Stack Engineer & QA Specialist</p>
+        <p style="font-size: 0.75rem; color: #666; margin-top: 0.5rem;">Next.js • Node.js • TypeScript • Automated QA • Cloud Systems • © <span id="curr-year">2026</span></p>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top" style="position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(10,10,15,0.85); border: 1px solid var(--accent2); color: var(--accent2); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 990; opacity: 0; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,229,255,0.2);">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script>
+        // Dismiss preloader once everything has settled
+        (function () {
+            var start = Date.now();
+            var MIN_SHOW = 400;
+
+            function pauseSVG(paused) {
+                try {
+                    document.querySelectorAll('svg').forEach(function (svg) {
+                        if (svg.closest('#preloader')) return;
+                        if (paused && svg.pauseAnimations) svg.pauseAnimations();
+                        if (!paused) {
+                            if (svg.setCurrentTime) svg.setCurrentTime(0);
+                            if (svg.unpauseAnimations) svg.unpauseAnimations();
+                        }
+                    });
+                } catch (e) {}
+            }
+            pauseSVG(true);
+            var fired = false;
+            function hidePreloader() {
+                if (fired) return;
+                var pl = document.getElementById('preloader');
+                if (!pl) return;
+                fired = true;
+                var wait = Math.max(0, MIN_SHOW - (Date.now() - start));
+                setTimeout(function () {
+                    pl.classList.add('loaded');
+                    document.body.classList.remove('preloading');
+                    pauseSVG(false);
+                    window.__preloaderDone = true;
+                    window.dispatchEvent(new Event('preloader:done'));
+                    setTimeout(function () { pl.remove(); }, 1400);
+                }, wait);
+            }
+            if (document.readyState === 'complete') {
+                hidePreloader();
+            } else {
+                window.addEventListener('load', hidePreloader);
+                setTimeout(hidePreloader, 4000);
+            }
+        })();
+
+        $(document).ready(function() {
+            // Render Lucide icons
+            try { lucide.createIcons(); } catch (e) {}
+
+            // WebGL Ripples
+            try {
+                $('#water-surface').ripples({
+                    resolution: 256,
+                    dropRadius: 25,
+                    perturbance: 0.05,
+                    interactive: false,
+                    crossOrigin: "anonymous"
+                });
+            } catch (e) {
+                console.error("WebGL error: ", e);
+            }
+
+            // Custom Cursor Logic & WebGL Drop injection
+            const dot = document.querySelector('.cursor-dot');
+            const outline = document.querySelector('.cursor-outline');
+            let lastRipple = 0;
+            let mouseX = -100, mouseY = -100, trailX = -100, trailY = -100;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (dot) dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+
+                const now = Date.now();
+                if(now - lastRipple > 30) {
+                    try { $('#water-surface').ripples('drop', mouseX, mouseY, 15, 0.04); } catch(e){}
+                    lastRipple = now;
+                }
+            });
+
+            (function cursorTrail() {
+                trailX += (mouseX - trailX) * 0.12;
+                trailY += (mouseY - trailY) * 0.12;
+                if (outline) outline.style.transform = `translate(${trailX}px, ${trailY}px) translate(-50%, -50%)`;
+                requestAnimationFrame(cursorTrail);
+            })();
+
+            // Hover effects for cursor
+            const clickables = document.querySelectorAll('a, .work-item, .b-card, .tech-pill2');
+            clickables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    if (outline) {
+                        outline.style.width = '60px';
+                        outline.style.height = '60px';
+                        outline.style.backgroundColor = 'rgba(0, 229, 255, 0.1)';
+                    }
+                });
+                el.addEventListener('mouseleave', () => {
+                    if (outline) {
+                        outline.style.width = '40px';
+                        outline.style.height = '40px';
+                        outline.style.backgroundColor = 'transparent';
+                    }
+                });
+            });
+
+            // CURSOR-REACTIVE LIQUID HERO NAME
+            const heroName = document.querySelector('.hero h1');
+            const liquidDisp = document.getElementById('liquidDisp');
+            const liquidTurb = document.getElementById('liquidTurb');
+            let liqTarget = 0, liqCurrent = 0, liqPhase = 0, liqLastX = 0, liqLastY = 0;
+
+            let liquidActive = false;
+            const liqNameElem = document.querySelector('.hero-name-text');
+            if (liqNameElem) {
+                liqNameElem.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'fillName' || e.animationName === 'drawTextStroke') liquidActive = true;
+                });
+                setTimeout(() => { liquidActive = true; }, 3000);
+            } else {
+                liquidActive = true;
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                if (!heroName || !liquidActive) return;
+                const r = heroName.getBoundingClientRect();
+                const dx = Math.max(r.left - e.clientX, 0, e.clientX - r.right);
+                const dy = Math.max(r.top - e.clientY, 0, e.clientY - r.bottom);
+                const proximity = Math.max(0, 1 - Math.hypot(dx, dy) / 280);
+                const speed = Math.hypot(e.clientX - liqLastX, e.clientY - liqLastY);
+                liqLastX = e.clientX; liqLastY = e.clientY;
+                liqTarget = Math.max(liqTarget, proximity * Math.min(65, 14 + speed * 2.4));
+            });
+
+            (function liquidLoop() {
+                liqCurrent += (liqTarget - liqCurrent) * 0.14;
+                liqTarget *= 0.90;
+                liqPhase += 0.02;
+                if (liquidDisp) liquidDisp.setAttribute('scale', liqCurrent.toFixed(2));
+                if (liquidTurb) {
+                    const bf = 0.009 + Math.sin(liqPhase) * 0.004;
+                    liquidTurb.setAttribute('baseFrequency', bf.toFixed(4) + ' ' + (bf * 1.6).toFixed(4));
+                }
+                requestAnimationFrame(liquidLoop);
+            })();
+
+            // Scroll reveal observer
+            const revealConfig = { rootMargin: '0px 0px -50px 0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, revealConfig);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            const startEntrance = () => {
+                document.querySelectorAll('#home .reveal, nav.reveal').forEach(el => el.classList.add('active'));
+            };
+            if (!document.getElementById('preloader') || window.__preloaderDone) {
+                startEntrance();
+            } else {
+                window.addEventListener('preloader:done', startEntrance, { once: true });
+            }
+
+            // Dynamic Year
+            const yrElem = document.getElementById('curr-year');
+            if (yrElem) yrElem.textContent = new Date().getFullYear();
+
+            // Floating Back-to-Top button logic
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        btt.style.opacity = '1';
+                        btt.style.pointerEvents = 'auto';
+                    } else {
+                        btt.style.opacity = '0';
+                        btt.style.pointerEvents = 'none';
+                    }
+                }, { passive: true });
+                btt.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+        });
+    </script>
+
+    <!-- 3D Low-Poly Rotating Head / Object (Three.js) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        const container = document.getElementById('head-3d');
+        if (container) {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+            camera.position.set(0, 0, 6);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+            const keyLight = new THREE.DirectionalLight(0x00e5ff, 2.2);
+            keyLight.position.set(4, 2, 3);
+            scene.add(keyLight);
+            const rimLight = new THREE.DirectionalLight(0xff2a5f, 2.6);
+            rimLight.position.set(-4, 1, -3);
+            scene.add(rimLight);
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.35);
+            fillLight.position.set(0, -3, 4);
+            scene.add(fillLight);
+
+            const spinGroup = new THREE.Group();
+            scene.add(spinGroup);
+
+            const facetMat = new THREE.MeshStandardMaterial({
+                color: 0x14141f, flatShading: true, metalness: 0.35, roughness: 0.45
+            });
+            const wireMat = new THREE.MeshBasicMaterial({
+                color: 0x00e5ff, wireframe: true, transparent: true, opacity: 0.15
+            });
+
+            let modelReady = false, nameDone = false;
+            function tryShow() {
+                if (modelReady && nameDone) container.classList.add('loaded');
+            }
+
+            const nameElem = document.querySelector('.hero-name-text');
+            if (nameElem) {
+                nameElem.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'fillName' || e.animationName === 'drawTextStroke') { 
+                        nameDone = true; 
+                        tryShow(); 
+                    }
+                });
+                setTimeout(() => { nameDone = true; tryShow(); }, 3000);
+            } else {
+                nameDone = true;
+                tryShow();
+            }
+
+            function setModel(object) {
+                const box = new THREE.Box3().setFromObject(object);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3()).length();
+                object.position.sub(center);
+                spinGroup.scale.setScalar(3.4 / size);
+                spinGroup.add(object);
+                modelReady = true;
+                tryShow();
+            }
+
+            // Procedural faceted low-poly sculpture with dynamic cyber geometry
+            function makePlaceholder() {
+                const geo = new THREE.IcosahedronGeometry(1.4, 1);
+                const pos = geo.attributes.position;
+                const v = new THREE.Vector3();
+                for (let i = 0; i < pos.count; i++) {
+                    v.fromBufferAttribute(pos, i);
+                    const n = Math.sin(v.x * 3.1) * Math.cos(v.y * 2.7) * Math.sin(v.z * 3.7);
+                    v.multiplyScalar(1 + n * 0.15);
+                    pos.setXYZ(i, v.x, v.y, v.z);
+                }
+                geo.computeVertexNormals();
+                const mesh = new THREE.Mesh(geo, facetMat);
+                mesh.add(new THREE.Mesh(geo, wireMat));
+                return mesh;
+            }
+
+            new GLTFLoader().load('head.glb',
+                (gltf) => {
+                    gltf.scene.traverse((o) => {
+                        if (o.isMesh) {
+                            o.material = facetMat;
+                            o.add(new THREE.Mesh(o.geometry, wireMat));
+                        }
+                    });
+                    setModel(gltf.scene);
+                },
+                undefined,
+                () => setModel(makePlaceholder())
+            );
+
+            let targetTilt = 0;
+            window.addEventListener('mousemove', (e) => {
+                targetTilt = (e.clientY / window.innerHeight - 0.5) * 0.35;
+            });
+
+            const aboutSection = document.getElementById('about');
+            let releaseY = Infinity;
+            function computeRelease() {
+                if (aboutSection) releaseY = Math.max(0, aboutSection.offsetTop - window.innerHeight);
+            }
+            computeRelease();
+            window.addEventListener('load', computeRelease);
+
+            function updateParallax() {
+                const y = window.scrollY;
+                const offset = y <= releaseY ? y : releaseY + (y - releaseY) * 0.5;
+                container.style.setProperty('--parallax', offset + 'px');
+            }
+            window.addEventListener('scroll', updateParallax, { passive: true });
+            updateParallax();
+
+            function resize() {
+                const w = container.clientWidth, h = container.clientHeight;
+                renderer.setSize(w, h);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                computeRelease();
+                updateParallax();
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            let inView = true;
+            new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; }).observe(container);
+
+            const clock = new THREE.Clock();
+            renderer.setAnimationLoop(() => {
+                if (!inView) return;
+                const t = clock.getElapsedTime();
+                spinGroup.rotation.y = t * 0.45;
+                spinGroup.rotation.x += (targetTilt - spinGroup.rotation.x) * 0.05;
+                spinGroup.position.y = Math.sin(t * 0.8) * 0.08;
+                renderer.render(scene, camera);
+            });
+        }
+    </script>
+</body>
+</html>
