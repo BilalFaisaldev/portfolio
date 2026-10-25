@@ -82,8 +82,6 @@ export default function BackgroundLayer() {
           </path>
         </svg>
       </div>
-
-      <div className="water-surface-overlay" />
     </>
   );
 }
