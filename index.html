@@ -42,15 +42,29 @@
       rel="stylesheet"
     />
     <!-- WebGL Water Ripple Engine -->
-    <script src="/jquery.min.js"></script>
-    <script src="/jquery.ripples.min.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script src="./jquery.ripples.min.js"></script>
+
+    <!-- Compiled Production CSS -->
+    <link rel="stylesheet" crossorigin href="./assets/index-oZFkDZ7u.css">
   </head>
   <body>
     <!-- Real WebGL Water Ripple Canvas Container -->
     <div id="water-surface"></div>
 
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Universal Loader: Vite Dev on localhost, Compiled Bundle on GitHub Pages -->
+    <script type="module">
+      const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocalDev) {
+        import('/src/main.jsx').catch(function() {
+          import('./assets/index-BkW6ten0.js');
+        });
+      } else {
+        import('./assets/index-BkW6ten0.js');
+      }
+    </script>
 
     <script>
       (function() {
