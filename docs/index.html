@@ -42,12 +42,72 @@
       rel="stylesheet"
     />
     <!-- WebGL Water Ripple Engine -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
-    <script type="module" crossorigin src="./assets/index-CUOHoLas.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DJx8wDXT.css">
+    <script src="./jquery.min.js"></script>
+    <script src="./jquery.ripples.min.js"></script>
+    <script type="module" crossorigin src="./assets/index-BkW6ten0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-oZFkDZ7u.css">
   </head>
   <body>
+    <!-- Real WebGL Water Ripple Canvas Container -->
+    <div id="water-surface"></div>
+
     <div id="root"></div>
+
+    <script>
+      (function() {
+        function initRipples() {
+          if (!window.$ || !window.$.fn || !window.$.fn.ripples) {
+            setTimeout(initRipples, 60);
+            return;
+          }
+          var $water = $('#water-surface');
+          if (!$water.length) return;
+
+          try {
+            $water.ripples({
+              resolution: 256,
+              dropRadius: 25,
+              perturbance: 0.05,
+              interactive: false,
+              crossOrigin: 'anonymous'
+            });
+
+            var lastRipple = 0;
+            window.addEventListener('mousemove', function(e) {
+              var now = Date.now();
+              if (now - lastRipple > 30) {
+                try {
+                  $water.ripples('drop', e.clientX, e.clientY, 18, 0.04);
+                } catch (err) {}
+                lastRipple = now;
+              }
+            }, { passive: true });
+
+            window.addEventListener('click', function(e) {
+              try {
+                $water.ripples('drop', e.clientX, e.clientY, 32, 0.08);
+              } catch (err) {}
+            });
+
+            // Ambient drops on start
+            setTimeout(function() {
+              try { $water.ripples('drop', window.innerWidth * 0.35, window.innerHeight * 0.35, 25, 0.06); } catch (e) {}
+            }, 600);
+            setTimeout(function() {
+              try { $water.ripples('drop', window.innerWidth * 0.65, window.innerHeight * 0.5, 30, 0.07); } catch (e) {}
+            }, 1200);
+
+          } catch (e) {
+            console.warn('WebGL ripples notice:', e);
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initRipples);
+        } else {
+          initRipples();
+        }
+      })();
+    </script>
   </body>
 </html>
