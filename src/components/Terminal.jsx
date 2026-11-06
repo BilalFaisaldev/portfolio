@@ -96,9 +96,9 @@ Bio: ${personalInfo.tagline}`;
         output = projects
           .map(
             (p, i) =>
-              `${i + 1}. ${p.title} [${p.category}]\n   Stack: ${p.tech.join(', ')}\n   Code: ${
+              `${i + 1}. ${p.title} [${p.category}]\n   Stack: ${p.tech.join(', ')}\n   Code:  ${
                 p.githubUrl || 'N/A'
-              }`
+              }${p.liveUrl ? `\n   Live:  ${p.liveUrl}` : ''}`
           )
           .join('\n\n');
         break;
