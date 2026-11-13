@@ -12,8 +12,8 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -46,8 +46,7 @@
     <!-- WebGL Water Ripple Engine -->
     <script src="./jquery.min.js"></script>
     <script src="./jquery.ripples.min.js"></script>
-
-    <script type="module" crossorigin src="./assets/index.js"></script>
+    <!-- Compiled Production CSS -->
     <link rel="stylesheet" crossorigin href="./assets/index.css">
   </head>
   <body>
@@ -56,6 +55,17 @@
 
     <div id="root"></div>
 
+    <!-- Universal Loader: Vite Dev on localhost, Compiled Bundle on GitHub Pages -->
+    <script type="module">
+      const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocalDev) {
+        import('/src/main.jsx').catch(function() {
+          import('./assets/index.js');
+        });
+      } else {
+        import('./assets/index.js');
+      }
+    </script>
 
     <script>
       (function() {
