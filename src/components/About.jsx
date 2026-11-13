@@ -36,7 +36,7 @@ export default function About() {
           )}
 
           <figcaption>
-            {personalInfo.name} // Karachi, PK
+            {personalInfo.name} // {personalInfo.location}
           </figcaption>
         </figure>
 
@@ -52,15 +52,15 @@ export default function About() {
               backend architectures.
             </p>
             <p>
-              With over 3+ years of commercial experience across Next.js 14, Node.js,
-              TypeScript, PostgreSQL, and MongoDB, I build production systems with automated
-              QA testing pipelines (Playwright & Jest) to guarantee 99.9% reliability and
+              With commercial development experience across Next.js 14, Node.js,
+              TypeScript, PHP, Laravel, and databases, I build production systems with automated
+              QA testing pipelines (Playwright & Jest) to guarantee robust reliability and
               zero-regression deployments.
             </p>
           </div>
 
           <div className="stats-banner" style={{ marginTop: '3.5rem' }}>
-            {stats.slice(0, 3).map((s, idx) => (
+            {stats.map((s, idx) => (
               <div className="stat-item" key={idx}>
                 <h4>{s.value}</h4>
                 <p>{s.label}</p>

@@ -21,11 +21,13 @@ export default function Footer() {
     <>
       <footer>
         <p>
-          Architected & Engineered by {personalInfo.name} // Full Stack Engineer & QA Specialist
+          Architected & Engineered by {personalInfo.name} // {personalInfo.primaryTitle}
         </p>
-        <p style={{ fontSize: '0.75rem', color: '#666', marginTop: '0.5rem' }}>
-          Next.js • Node.js • React • TypeScript • Automated QA • Cloud Systems • ©{' '}
-          {new Date().getFullYear()}
+        <p style={{ fontSize: '0.8rem', color: '#666', marginTop: '0.6rem' }}>
+          Next.js • Node.js • React • TypeScript • Automated QA • Cloud Systems
+        </p>
+        <p style={{ fontSize: '0.82rem', color: '#888', marginTop: '0.4rem' }}>
+          {personalInfo.copyrightText}
         </p>
       </footer>
 

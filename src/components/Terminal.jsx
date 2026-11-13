@@ -5,7 +5,7 @@ export default function TerminalModal({ isOpen, onClose }) {
   const [history, setHistory] = useState([
     {
       type: 'system',
-      text: "⚡ Muhammad Bilal Faisal — Developer Terminal v2.0.0 [Node/React Engine]\nType 'help' to view available system commands.",
+      text: `⚡ ${personalInfo.name} — Developer Terminal v2.0.0\nType 'help' to view available system commands.`,
     },
   ]);
   const [inputVal, setInputVal] = useState('');
@@ -68,7 +68,7 @@ export default function TerminalModal({ isOpen, onClose }) {
       case 'help':
         output = `Available Commands:
   help       - Display this list of commands
-  whoami     - Learn about Muhammad Bilal Faisal
+  whoami     - Learn about ${personalInfo.name}
   skills     - View full-stack tech stack & QA tools
   projects   - Output catalog of production projects
   exp        - View career journey & engineering timeline
@@ -96,8 +96,8 @@ Bio: ${personalInfo.tagline}`;
         output = projects
           .map(
             (p, i) =>
-              `${i + 1}. ${p.title} [${p.category}]\n   Stack: ${p.tech.join(', ')}\n   Code:  ${
-                p.githubUrl || 'N/A'
+              `${i + 1}. ${p.title} [${p.category}]\n   Stack: ${p.tech.join(', ')}${
+                p.githubUrl ? `\n   Code:  ${p.githubUrl}` : ''
               }${p.liveUrl ? `\n   Live:  ${p.liveUrl}` : ''}`
           )
           .join('\n\n');
@@ -114,8 +114,7 @@ Bio: ${personalInfo.tagline}`;
       case 'contact':
         output = `Email:    ${personalInfo.email}
 WhatsApp: ${personalInfo.phone} (${personalInfo.whatsappUrl})
-GitHub:   ${personalInfo.githubUrl}
-LinkedIn: ${personalInfo.linkedinUrl}`;
+GitHub:   ${personalInfo.githubUrl}`;
         break;
 
       case 'sudo hire':
@@ -142,48 +141,47 @@ WhatsApp desk:    ${personalInfo.phone}`;
 
     setHistory((prev) => [
       ...prev,
-      { type: 'input', text: `bilal@terminal:~$ ${trimmed}` },
-      { type: 'output', text: output, isError },
+      { type: 'user', text: `$ ${trimmed}` },
+      { type: isError ? 'error' : 'output', text: output },
     ]);
     setInputVal('');
   };
 
   return (
-    <div className="terminal-modal-overlay" onClick={onClose}>
-      <div className="terminal-window" onClick={(e) => e.stopPropagation()}>
-        <div className="terminal-header">
+    <div className="terminal-overlay" onClick={onClose}>
+      <div
+        className="terminal-window"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="terminal-topbar">
           <div className="terminal-dots">
-            <span className="dot-red" onClick={onClose} title="Close" />
-            <span className="dot-yellow" title="Minimize" />
-            <span
-              className="dot-green"
-              onClick={() => setHistory([{ type: 'system', text: "Terminal reset.\nType 'help' for commands." }])}
-              title="Reset"
-            />
+            <span className="dot dot-red" onClick={onClose} title="Close Terminal" />
+            <span className="dot dot-yellow" title="Minimize" />
+            <span className="dot dot-green" title="Expand" />
           </div>
-          <div className="terminal-title">bilal@production-shell: ~</div>
-          <div style={{ width: 40 }} />
+          <div className="terminal-title">
+            bash — bilalfaisal@portfolio:~
+          </div>
+          <button
+            type="button"
+            className="terminal-close-btn"
+            onClick={onClose}
+          >
+            ✕
+          </button>
         </div>
 
-        <div className="terminal-body" onClick={() => inputRef.current?.focus()}>
+        <div className="terminal-screen">
           {history.map((h, i) => (
-            <div key={i} className="term-line">
-              {h.type === 'input' && <span className="term-prompt">{h.text}</span>}
-              {h.type === 'output' && (
-                <div className={`term-output ${h.isError ? 'error' : ''}`}>
-                  {h.text}
-                </div>
-              )}
-              {h.type === 'system' && (
-                <div style={{ color: 'var(--accent2)', marginBottom: '0.8rem' }}>
-                  {h.text}
-                </div>
-              )}
+            <div key={i} className={`term-line term-${h.type}`}>
+              {h.text}
             </div>
           ))}
 
-          <div className="terminal-input-row">
-            <span className="term-prompt">bilal@terminal:~$</span>
+          <div className="term-input-line">
+            <span className="term-prompt">bilal@mbf:~$</span>
             <input
               ref={inputRef}
               type="text"
@@ -191,6 +189,8 @@ WhatsApp desk:    ${personalInfo.phone}`;
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleCommand}
               autoFocus
+              spellCheck="false"
+              autoComplete="off"
             />
           </div>
           <div ref={bottomRef} />

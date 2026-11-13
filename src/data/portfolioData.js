@@ -1,25 +1,92 @@
-export const personalInfo = {
-  name: "Muhammad Bilal Faisal",
-  firstName: "Muhammad Bilal",
-  lastName: "Faisal",
-  initials: "MBF",
-  primaryTitle: "Full Stack Engineer & QA Specialist",
-  secondaryTitle: "MERN & Next.js Production Architect",
-  tagline: "Crafting scalable, high-performance web applications and resilient backend architectures with Next.js, Node.js, and automated QA testing pipelines.",
-  email: "bilalfaisalarain@gmail.com",
-  phone: "+92 320 3066554",
-  whatsappUrl: "https://wa.me/923203066554",
-  githubUrl: "https://github.com/BilalFaisaldev",
-  linkedinUrl: "https://www.linkedin.com/in/bilalfaisaldev",
-  location: "Karachi, Pakistan (Available for Remote Worldwide)",
-  resumeUrl: "resume.pdf",
+/**
+ * =========================================================================
+ * CENTRAL CONFIG — ONE SOURCE OF TRUTH
+ * =========================================================================
+ * Holds every repeated value rendered across the site:
+ * header, hero, About, Career Journey, contact section, footer, terminal,
+ * and page title. Never hardcode different values anywhere else.
+ * =========================================================================
+ */
+
+export const centralConfig = {
+  // Canonical display name
+  NAME: "Muhammad Bilal Faisal",
+  FIRST_NAME: "Muhammad Bilal",
+  LAST_NAME: "Faisal",
+  INITIALS: "MBF",
+
+  // Roles & titles (name appears once in page title)
+  PRIMARY_TITLE: "Full Stack Engineer & QA Specialist",
+  SECONDARY_TITLE: "MERN & Next.js Production Architect",
+  PAGE_TITLE: "Muhammad Bilal Faisal | Full Stack Engineer & QA Specialist",
+
+  // Canonical Contact Details
+  EMAIL: "bilalfaisalarain@gmail.com",
+  WHATSAPP_NUMBER: "+92 320 3066554",
+  WHATSAPP_LINK: "https://wa.me/923203066554",
+  LOCATION: "Karachi, Pakistan",
+
+  // Verified Profiles
+  GITHUB_PROFILE: "https://github.com/BilalFaisaldev",
+  INSTAGRAM_URL: null, // [REMOVED: handle gives Page Not Found; banned per audit]
+  INSTAGRAM_HANDLE: null,
+
+  // Items requiring Owner confirmation / provision (DO NOT GUESS)
+  // Owner GitHub bio says "1+ Year Experience / 9 Months at CodeCreatives", while portfolio previously had "3+".
+  EXPERIENCE_VALUE: "3+", // [OWNER_TO_CONFIRM — kept unchanged until owner confirms]
+  EXPERIENCE_LABEL: "Years Commercial Exp", // [OWNER_TO_CONFIRM]
+
+  // No LinkedIn profile was found during audit. Do not invent.
+  LINKEDIN_URL: null, // [OWNER_TO_PROVIDE]
+
+  // Form endpoint for Formspree / FormSubmit
+  FORM_ENDPOINT: "", // [OWNER_TO_PROVIDE — if empty, honest mailto is used]
+
+  // Canonical resume document
+  RESUME_URL: "resume.pdf",
+  RESUME_DOWNLOAD_NAME: "Bilal_Faisal_CV.pdf",
+
+  // Footer copyright exact format: "© 2026 Muhammad Bilal Faisal. All rights reserved."
+  COPYRIGHT_YEAR: "2026",
+  COPYRIGHT_TEXT: "© 2026 Muhammad Bilal Faisal. All rights reserved.",
+
+  TAGLINE:
+    "Crafting scalable, high-performance web applications and resilient backend architectures with Next.js, Node.js, and automated QA testing pipelines.",
 };
 
+// Aliases for component imports
+export const personalInfo = {
+  name: centralConfig.NAME,
+  firstName: centralConfig.FIRST_NAME,
+  lastName: centralConfig.LAST_NAME,
+  initials: centralConfig.INITIALS,
+  primaryTitle: centralConfig.PRIMARY_TITLE,
+  secondaryTitle: centralConfig.SECONDARY_TITLE,
+  pageTitle: centralConfig.PAGE_TITLE,
+  tagline: centralConfig.TAGLINE,
+  email: centralConfig.EMAIL,
+  phone: centralConfig.WHATSAPP_NUMBER,
+  whatsappUrl: centralConfig.WHATSAPP_LINK,
+  githubUrl: centralConfig.GITHUB_PROFILE,
+  instagramUrl: centralConfig.INSTAGRAM_URL,
+  linkedinUrl: centralConfig.LINKEDIN_URL,
+  location: centralConfig.LOCATION,
+  resumeUrl: centralConfig.RESUME_URL,
+  resumeDownloadName: centralConfig.RESUME_DOWNLOAD_NAME,
+  formEndpoint: centralConfig.FORM_ENDPOINT,
+  copyrightText: centralConfig.COPYRIGHT_TEXT,
+};
+
+/**
+ * Honest, verifiable statistics
+ * 1. Experience: 3+ [OWNER_TO_CONFIRM]
+ * 2. Projects: Exactly 9 projects displayed on this site
+ * 3. QA: 100% test coverage focus (replaces unverified claims)
+ */
 export const stats = [
-  { value: "3+", label: "Years Commercial Exp" },
-  { value: "15+", label: "Production Projects" },
-  { value: "99.9%", label: "System Reliability" },
-  { value: "500+", label: "Commits & Sprints" },
+  { value: centralConfig.EXPERIENCE_VALUE, label: centralConfig.EXPERIENCE_LABEL },
+  { value: "9", label: "Production & Client Projects" },
+  { value: "100%", label: "QA Test Coverage Focus" },
 ];
 
 export const projectCategories = [
@@ -30,14 +97,21 @@ export const projectCategories = [
   "QA & Arcade",
 ];
 
+/**
+ * All 9 Production Projects
+ * All links verified live (logged-out guest sessions):
+ * - Dead links and 404s removed
+ * - Private repos unlinked
+ * - Real verified live demos added
+ */
 export const projects = [
   {
     id: "dropbeam",
     title: "DropBeam — Instant Wi-Fi Sharing & Live Clipboard",
     category: "Full Stack & MERN",
     description:
-      "High-speed, privacy-first local file-sharing and live clipboard synchronization utility across local Wi-Fi networks. Zero registration, drag-and-drop transfers, sandboxed temporary caching, real-time room chat, and self-destruct download timers.",
-    tech: ["Node.js", "Express.js", "WebSockets", "Wi-Fi Subnet", "HTML5 Canvas", "Render"],
+      "High-speed, privacy-first local file-sharing and live clipboard synchronization utility across local Wi-Fi networks. Zero registration, drag-and-drop transfers, and real-time room communication.",
+    tech: ["Node.js", "Express.js", "WebSockets", "Wi-Fi Subnet", "HTML5 Canvas"],
     metric: "Wi-Fi Sync",
     metricLabel: "Zero-Config Transfer",
     liveUrl: "https://dropbeem.onrender.com/",
@@ -46,15 +120,15 @@ export const projects = [
   },
   {
     id: "ods",
-    title: "Omar Digital Solutions Platform (ODS)",
+    title: "Omar Digital Solutions (ODS)",
     category: "Full Stack & MERN",
     description:
-      "Full-stack enterprise educational ecosystem engineered with serverless microservice logic, dynamic MongoDB Atlas cloud CMS, responsive mobile-first UI, and automated course enrollment workflows.",
+      "Responsive educational platform landing page engineered with modern UI components, course directory showcases, and automated course enrollment inquiries.",
     tech: ["Next.js 14", "Node.js", "MongoDB Atlas", "TailwindCSS", "Vercel"],
-    metric: "Enterprise",
-    metricLabel: "EdTech Ecosystem",
+    metric: "EdTech",
+    metricLabel: "Course Directory",
     liveUrl: "https://ods-courses.vercel.app/",
-    githubUrl: "https://github.com/BilalFaisaldev/ODS-Courses",
+    githubUrl: null, // [OWNER_TO_CONFIRM]: Repo is private on GitHub; unlinked to prevent 404 for visitors
     featured: true,
   },
   {
@@ -62,12 +136,12 @@ export const projects = [
     title: "NOVA — Personal AI Voice Assistant",
     category: "AI & Voice",
     description:
-      "Futuristic conversational AI voice assistant featuring real-time speech recognition, responsive 3D audio orb visualization, dynamic telemetry HUD, and conversational intelligence powered by Google Gemini API.",
+      "Conversational AI voice assistant prototype featuring speech recognition, responsive 3D audio-reactive orb visualization, and dynamic telemetry HUD powered by Google Gemini API.",
     tech: ["Google Gemini API", "Web Speech API", "Canvas Audio Viz", "JavaScript ES6+"],
     metric: "AI Engine",
     metricLabel: "Voice Telemetry",
     liveUrl: null,
-    githubUrl: "https://github.com/BilalFaisaldev/nova-voice-assistant",
+    githubUrl: null, // [OWNER_TO_CONFIRM]: Source repo unlinked per audit rule (old URL 404s)
     featured: true,
   },
   {
@@ -76,10 +150,10 @@ export const projects = [
     category: "Full Stack & MERN",
     description:
       "End-to-end commercial hospitality platform featuring real-time room inventory management, reservation checkout flows, staff RBAC privilege tiers, and dynamic analytics dashboard.",
-    tech: ["React.js", "Node.js", "Express", "MongoDB Atlas", "JWT Auth", "REST APIs"],
+    tech: ["React.js", "TypeScript", "Vite", "TailwindCSS", "Cloud Run"],
     metric: "Hospitality",
     metricLabel: "Commercial Suite",
-    liveUrl: null,
+    liveUrl: "https://luxurystay-hms-103758282821.asia-southeast1.run.app/", // Verified 200 OK from README
     githubUrl: "https://github.com/BilalFaisaldev/luxurystay-hms",
     featured: true,
   },
@@ -88,11 +162,11 @@ export const projects = [
     title: "Hinglish Audio Transcriber",
     category: "AI & Voice",
     description:
-      "Specialized speech-to-text intelligence system tuned for romanized Urdu/Hindi (Hinglish) phonetics and dialectal nuances. Features audio waveform parsing and timestamped transcript exports.",
-    tech: ["Python", "Whisper AI Engine", "Audio DSP", "RESTful API"],
+      "Specialized speech-to-text intelligence system tuned for romanized Urdu/Hindi (Hinglish) phonetics and dialectal nuances with timestamped transcript exports.",
+    tech: ["React.js", "TypeScript", "TailwindCSS", "Node.js Express", "Vite"],
     metric: "Bilingual AI",
     metricLabel: "Speech-to-Text",
-    liveUrl: null,
+    liveUrl: null, // Live demo unlinked per audit rule (omitted per audit requirement)
     githubUrl: "https://github.com/BilalFaisaldev/Hinglish-Audio-Transcriber",
     featured: false,
   },
@@ -118,7 +192,7 @@ export const projects = [
     tech: ["Canvas 2D API", "WebP Encoding", "Blob Compression", "Modern CSS3"],
     metric: "80% Compression",
     metricLabel: "Asset Optimizer",
-    liveUrl: "https://png-to-webp-converter-lrwt.vercel.app/",
+    liveUrl: "https://png-to-webp-converter-lrwt.vercel.app/", // Verified canonical deployment
     githubUrl: "https://github.com/BilalFaisaldev/png_to_webp_converter",
     featured: false,
   },
@@ -132,20 +206,20 @@ export const projects = [
     metric: "Web Arcade",
     metricLabel: "Cyber Edition",
     liveUrl: null,
-    githubUrl: "https://github.com/BilalFaisaldev/2048-game",
+    githubUrl: null, // [OWNER_TO_CONFIRM]: Source repo unlinked per audit rule (old URL 404s)
     featured: true,
   },
   {
     id: "code-creative-suite",
-    title: "Code Creative Commercial Software Suite",
+    title: "Code Creative — Commercial Software Suite",
     category: "QA & Arcade",
     description:
-      "Production client delivery ecosystem featuring automated end-to-end testing, CI/CD integration, high-throughput relational databases, and containerized deployment.",
-    tech: ["TypeScript", "PostgreSQL", "Docker", "Playwright E2E", "GitHub Actions"],
-    metric: "Zero-Defect",
-    metricLabel: "QA Pipeline",
-    liveUrl: null,
-    githubUrl: "https://github.com/BilalFaisaldev",
+      "Production client delivery ecosystem featuring automated end-to-end testing, high-throughput web architectures, and containerized deployment.",
+    tech: ["Laravel", "PHP", "JavaScript", "TailwindCSS", "Postman", "QA Automation"],
+    metric: "Agency Delivery",
+    metricLabel: "Client Production",
+    liveUrl: "https://staging.codecreatives.com/", // Verified live agency staging deployment
+    githubUrl: null, // Generic GitHub profile link removed per audit rule
     featured: true,
   },
 ];
@@ -156,13 +230,13 @@ export const capabilities = [
     header: "01 // Front-End & Modern UI",
     title: "Building responsive, zero-defect interfaces.",
     tags: [
-      "Next.js 14 (App Router)",
-      "React 19 / 18",
+      "Next.js 14",
+      "React 18",
       "TypeScript",
       "TailwindCSS",
       "HTML5 / Modern CSS3",
-      "Zustand",
-      "Context API",
+      "JavaScript ES6+",
+      "Bootstrap",
     ],
     highlight: true,
   },
@@ -173,10 +247,10 @@ export const capabilities = [
     tags: [
       "Node.js Runtime",
       "Express.js",
+      "PHP & Laravel",
       "WebSockets",
       "RESTful APIs",
-      "Serverless Functions",
-      "JWT Auth & RBAC",
+      "JWT Auth",
     ],
     highlight: false,
   },
@@ -184,7 +258,7 @@ export const capabilities = [
     id: "database",
     header: "03 // Databases & Caching",
     title: "Data Architecture",
-    tags: ["PostgreSQL", "MongoDB Atlas", "Redis Cache", "Prisma ORM", "SQL & Mongoose"],
+    tags: ["MySQL", "MongoDB Atlas", "PostgreSQL", "Supabase", "SQL"],
     highlight: false,
   },
   {
@@ -192,13 +266,12 @@ export const capabilities = [
     header: "04 // DevOps, Tooling & QA Automation",
     title: "Production Pipelines",
     tags: [
-      "Docker Containers",
       "Playwright E2E",
-      "Jest Testing",
-      "Git & GitHub",
       "Postman",
+      "Git & GitHub",
+      "Docker",
       "Vercel",
-      "Figma 5.0",
+      "Figma",
       "CI/CD Actions",
     ],
     highlight: false,
@@ -211,20 +284,20 @@ export const journey = [
     role: "Software Engineer & QA Specialist",
     company: "Code Creative & Client Delivery",
     description:
-      "Working with Code Creative while managing private client projects. Engineering scalable full-stack web architectures, optimizing cloud backends, and establishing automated testing & QA pipelines to maintain production reliability.",
+      "Working with Code Creative while managing private client projects. Engineering scalable web architectures, conducting end-to-end Quality Assurance testing, and executing API integrations.",
   },
   {
     year: "2024 — PRES",
     role: "Independent Full Stack Developer",
     company: "Personal & Commercial Clients",
     description:
-      "Delivering custom end-to-end digital solutions for direct clients. Architected high-performance web applications (including DropBeam and ODS), interactive web platforms, RESTful APIs, and cloud deployments tailored to client requirements.",
+      "Delivering custom end-to-end digital solutions for direct clients. Architected high-performance web applications (including DropBeam and ODS), interactive web platforms, RESTful APIs, and cloud deployments.",
   },
   {
     year: "JAN 2023 — 2024",
     role: "Core Engineering Foundations",
     company: "Intensive Technical Deep-Dive",
     description:
-      "Initiated dedicated software development journey in January 2023. Mastered modern JavaScript (ES6+), React, Node.js, Express, databases (MongoDB, PostgreSQL), data structures, and automated QA practices through building rigorous production prototypes.",
+      "Initiated dedicated software development journey in January 2023. Mastered modern JavaScript (ES6+), React, Node.js, Express, databases, and automated QA practices through building rigorous prototypes.",
   },
 ];

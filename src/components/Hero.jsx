@@ -36,6 +36,7 @@ export default function Hero() {
           <a
             className="tech-pill2"
             href={personalInfo.resumeUrl}
+            download={personalInfo.resumeDownloadName}
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -63,7 +64,7 @@ export default function Hero() {
             rel="noopener noreferrer"
           >
             <Phone size={15} />
-            WhatsApp Desk
+            WhatsApp
           </a>
           <a className="tech-pill2" href={`mailto:${personalInfo.email}`}>
             <Mail size={15} />
