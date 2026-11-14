@@ -1,7 +1,7 @@
 import React from 'react';
 import { personalInfo, stats } from '../data/portfolioData';
 import ThreeCanvas from './ThreeCanvas';
-import { Github, Phone, Mail, MapPin, FileText } from 'lucide-react';
+import { Github, Phone, Mail, MapPin, FileText, Instagram } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -66,6 +66,18 @@ export default function Hero() {
             <Phone size={15} />
             WhatsApp
           </a>
+          {personalInfo.instagramUrl && (
+            <a
+              className="tech-pill2"
+              href={personalInfo.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ borderColor: 'rgba(228, 64, 95, 0.4)', color: '#ff809b' }}
+            >
+              <Instagram size={15} />
+              Instagram
+            </a>
+          )}
           <a className="tech-pill2" href={`mailto:${personalInfo.email}`}>
             <Mail size={15} />
             Email

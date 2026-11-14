@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MessageCircle, FileDown, Copy, Check, Send } from 'lucide-react';
+import { Mail, MessageCircle, FileDown, Copy, Check, Send, Instagram } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -259,6 +259,19 @@ export default function Contact() {
             <MessageCircle size={16} />
             WhatsApp Desk
           </a>
+
+          {personalInfo.instagramUrl && (
+            <a
+              className="tech-pill2"
+              href={personalInfo.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ borderColor: 'rgba(228, 64, 95, 0.4)', color: '#ff809b' }}
+            >
+              <Instagram size={16} />
+              Instagram
+            </a>
+          )}
 
           <a
             className="tech-pill2"

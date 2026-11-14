@@ -28,13 +28,12 @@ export const centralConfig = {
 
   // Verified Profiles
   GITHUB_PROFILE: "https://github.com/BilalFaisaldev",
-  INSTAGRAM_URL: null, // [REMOVED: handle gives Page Not Found; banned per audit]
-  INSTAGRAM_HANDLE: null,
+  INSTAGRAM_URL: "https://www.instagram.com/bilalfaysaldev/",
+  INSTAGRAM_HANDLE: "@bilalfaysaldev",
 
-  // Items requiring Owner confirmation / provision (DO NOT GUESS)
-  // Owner GitHub bio says "1+ Year Experience / 9 Months at CodeCreatives", while portfolio previously had "3+".
-  EXPERIENCE_VALUE: "3+", // [OWNER_TO_CONFIRM — kept unchanged until owner confirms]
-  EXPERIENCE_LABEL: "Years Commercial Exp", // [OWNER_TO_CONFIRM]
+  // Confirmed Commercial Experience
+  EXPERIENCE_VALUE: "2+",
+  EXPERIENCE_LABEL: "Years Commercial Exp",
 
   // No LinkedIn profile was found during audit. Do not invent.
   LINKEDIN_URL: null, // [OWNER_TO_PROVIDE]

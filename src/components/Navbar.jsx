@@ -25,6 +25,11 @@ export default function Navbar({ onOpenTerminal }) {
         <a href={personalInfo.whatsappUrl} target="_blank" rel="noopener noreferrer">
           WhatsApp
         </a>
+        {personalInfo.instagramUrl && (
+          <a href={personalInfo.instagramUrl} target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+        )}
         <a href="#contact">Contact</a>
 
         {/* Developer Terminal Toggle */}
@@ -113,6 +118,11 @@ export default function Navbar({ onOpenTerminal }) {
               <a href={personalInfo.whatsappUrl} target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
+              {personalInfo.instagramUrl && (
+                <a href={personalInfo.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  Instagram
+                </a>
+              )}
             </div>
           </div>
         </div>

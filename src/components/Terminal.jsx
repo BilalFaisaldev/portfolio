@@ -112,9 +112,11 @@ Bio: ${personalInfo.tagline}`;
         break;
 
       case 'contact':
-        output = `Email:    ${personalInfo.email}
-WhatsApp: ${personalInfo.phone} (${personalInfo.whatsappUrl})
-GitHub:   ${personalInfo.githubUrl}`;
+        output = `Email:     ${personalInfo.email}
+WhatsApp:  ${personalInfo.phone} (${personalInfo.whatsappUrl})
+GitHub:    ${personalInfo.githubUrl}${
+          personalInfo.instagramUrl ? `\nInstagram: ${personalInfo.instagramUrl}` : ''
+        }`;
         break;
 
       case 'sudo hire':
