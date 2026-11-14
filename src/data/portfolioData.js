@@ -217,7 +217,7 @@ export const projects = [
     tech: ["Laravel", "PHP", "JavaScript", "TailwindCSS", "Postman", "QA Automation"],
     metric: "Agency Delivery",
     metricLabel: "Client Production",
-    liveUrl: "https://staging.codecreatives.com/", // Verified live agency staging deployment
+    liveUrl: null, // Private agency client delivery — unlinked per audit rule (domain inactive)
     githubUrl: null, // Generic GitHub profile link removed per audit rule
     featured: true,
   },
