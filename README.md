@@ -2,7 +2,7 @@
 
 Production portfolio site for **Muhammad Bilal Faisal** — Full Stack Web Developer & QA Specialist.
 
-- **Live URL**: [https://bilalfaisaldev.github.io/portfolio/](https://bilalfaisaldev.github.io/portfolio/)
+- **Live URL**: [https://bilalfaisaldev.online/](https://bilalfaisaldev.online/) (Primary Custom Domain) | [https://bilalfaisaldev.github.io/portfolio/](https://bilalfaisaldev.github.io/portfolio/) (GitHub Pages Mirror)
 - **Core Stack**: React 18, Vite 5, Tailwind CSS, Three.js, Lucide Icons
 - **Commercial Experience**: 2+ Years Commercial Exp (Dec 2025 – Present: Web Developer & Website QA Tester at Code Creative Agency; 2024 – Present: Independent Full Stack Developer & QA)
 - **Contact**: [bilalfaisalarain@gmail.com](mailto:bilalfaisalarain@gmail.com) | [WhatsApp: +92 320 3066554](https://wa.me/923203066554) | [Instagram: @bilalfaysaldev](https://www.instagram.com/bilalfaysaldev/) | [GitHub: BilalFaisaldev](https://github.com/BilalFaisaldev)
